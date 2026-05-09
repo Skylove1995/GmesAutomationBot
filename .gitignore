@@ -1,0 +1,33 @@
+# Visual Studio / local IDE state
+.vs/
+.agent/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build outputs
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Local app configuration and secrets
+src/GmesImporter.App/appsettings.json
+**/appsettings.Development.json
+**/appsettings.Local.json
+.env
+.env.*
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+Thumbs.db
+Desktop.ini

@@ -22,7 +22,9 @@ GmesImporter.exe protect-text "secret value"
 dotnet publish src\GmesImporter.App\GmesImporter.App.csproj -c Release -r win-x64 --self-contained true /p:PublishSingleFile=true
 ```
 
-2. Either keep plaintext values in `appsettings.json` while testing, or create encrypted values on the same Windows account that will run the Scheduled Task:
+2. Copy `src\GmesImporter.App\appsettings.example.json` to `src\GmesImporter.App\appsettings.json`.
+
+3. Either keep plaintext values in `appsettings.json` while testing, or create encrypted values on the same Windows account that will run the Scheduled Task:
 
 ```powershell
 .\GmesImporter.exe protect-text "server=10.7.10.6;user=<least_privilege_user>;password=<password>;database=mex_mes;ConvertZeroDateTime=True"
@@ -30,29 +32,29 @@ dotnet publish src\GmesImporter.App\GmesImporter.App.csproj -c Release -r win-x6
 .\GmesImporter.exe protect-text "<GMES password>"
 ```
 
-3. Put either the plaintext values or returned `dpapi:...` strings into `appsettings.json`.
+4. Put either the plaintext values or returned `dpapi:...` strings into `appsettings.json`.
 
-4. Confirm `IEDriverServer.exe` is beside `GmesImporter.exe` or update `Browser:IeDriverPath`.
+5. Confirm `IEDriverServer.exe` is beside `GmesImporter.exe` or update `Browser:IeDriverPath`.
 
-5. Validate:
+6. Validate:
 
 ```powershell
 .\GmesImporter.exe validate-config
 ```
 
-6. Test with a known export file first:
+7. Test with a known export file first:
 
 ```powershell
 .\GmesImporter.exe dry-run --file "C:\Path\To\Excel_Export_sample.xlsx"
 ```
 
-7. Test full GMES export on the internal machine:
+8. Test full GMES export on the internal machine:
 
 ```powershell
 .\GmesImporter.exe dry-run
 ```
 
-8. Install the scheduled task:
+9. Install the scheduled task:
 
 ```powershell
 .\scripts\install-scheduled-task.ps1 -ExePath "C:\Path\To\publish\GmesImporter.exe" -WorkingDirectory "C:\Path\To\publish" -IntervalMinutes 15
